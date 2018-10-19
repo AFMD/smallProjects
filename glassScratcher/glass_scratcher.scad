@@ -4,10 +4,11 @@ glass_dim = 28;
 glass_fudge = 0.2;
 pocket_dim = glass_dim + glass_fudge;
 
+//$fn = 100;
 extraXY = 50;
 
-x = glass_dim + extraXY;
-y = glass_dim + extraXY;
+x = pocket_dim + extraXY;
+y = pocket_dim + extraXY;
 z = 5;
 
 slot_x_position = extraXY/2;
