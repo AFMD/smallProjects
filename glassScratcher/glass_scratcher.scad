@@ -3,7 +3,8 @@ glass_z_fudge = 0.1;
 pocket_thickness = glass_thickness + glass_z_fudge;
 active_area_buffer_thickness = 0.25;
 
-glass_dim = 38;
+glass_dim = 28;
+
 glass_fudge = 0.5;
 pocket_dim = glass_dim + glass_fudge;
 ridge_dim = 10;
@@ -44,6 +45,9 @@ difference(){
     
     // active area buffer
     translate([(x-pocket_dim)/2+slot_width/2,(y-pocket_dim)/2+slot_width/2,0]) cube([pocket_dim-slot_width,pocket_dim-slot_width,glass_thickness+active_area_buffer_thickness]);
+    
+    // active area buffer
+    translate([(x-pocket_dim)/2+slot_width/2,(y-pocket_dim)/2+slot_width/2,0]) cube([pocket_dim-slot_width,pocket_dim-slot_width,glass_thickness+active_area_buffer]);
     
     // glass removal notch
     
