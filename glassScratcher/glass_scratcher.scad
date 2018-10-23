@@ -1,7 +1,10 @@
-glass_thickness = 1.25;
-active_area_buffer = 0.25;
+glass_thickness = 1.1;
+glass_z_fudge = 0.1;
+pocket_thickness = glass_thickness + glass_z_fudge;
+active_area_buffer_thickness = 0.25;
 
 glass_dim = 28;
+
 glass_fudge = 0.5;
 pocket_dim = glass_dim + glass_fudge;
 ridge_dim = 10;
@@ -38,7 +41,10 @@ difference(){
     translate([x-slot_x_position-slot_width,0,glass_thickness]) cube([wide_slot_width,y,slot_depth]);
     
     // glass pocket
-    translate([(x-pocket_dim)/2,(y-pocket_dim)/2,0]) cube([pocket_dim,pocket_dim,glass_thickness]);
+    translate([(x-pocket_dim)/2,(y-pocket_dim)/2,0]) cube([pocket_dim,pocket_dim,pocket_thickness]);
+    
+    // active area buffer
+    translate([(x-pocket_dim)/2+slot_width/2,(y-pocket_dim)/2+slot_width/2,0]) cube([pocket_dim-slot_width,pocket_dim-slot_width,glass_thickness+active_area_buffer_thickness]);
     
     // active area buffer
     translate([(x-pocket_dim)/2+slot_width/2,(y-pocket_dim)/2+slot_width/2,0]) cube([pocket_dim-slot_width,pocket_dim-slot_width,glass_thickness+active_area_buffer]);
