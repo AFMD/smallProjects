@@ -1,3 +1,6 @@
 [submodule "b40Model/ezFreeCAD"]
 	path = b40Model/ezFreeCAD
 	url = https://github.com/AFMD/ezFreeCAD.git
+[submodule "DC_sourcemeter/control-software"]
+	path = DC_sourcemeter/control-software
+	url = https://github.com/mutovis/control-software
