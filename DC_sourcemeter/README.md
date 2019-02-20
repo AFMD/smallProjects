@@ -64,3 +64,8 @@ $ cat data.csv
 9.499,-0.000000,2.000041,39944
 9.943,-0.000000,2.000041,39944
 ```
+Then you could read that data in with the pandas python module like so:
+```python
+import pandas
+the_data = pandas.read_csv('data.csv')
+```
