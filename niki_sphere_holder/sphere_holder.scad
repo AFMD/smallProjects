@@ -3,9 +3,8 @@
 // 12 March 2019
 
 // all dims in mm
-major_cap = [40, 40, 3]; // holder outer dims
-base_enlarge = 5;
-major_base = [40+base_enlarge, 40+base_enlarge, 3]; // holder outer dims
+major_cap = [40, 50, 3]; // holder outer dims
+major_base = [50, 40, 3]; // holder outer dims
 substrate = [15, 15, 1]; // substrate dimensions
 substrate_fudge = 0.4; // manufacturing fudge factor
 shelf_thickness = 0.5;
