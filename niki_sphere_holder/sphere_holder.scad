@@ -3,32 +3,34 @@
 // 12 March 2019
 
 // all dims in mm
-major = [40, 40, 3]; // holder outer dims
+major_cap = [40, 40, 3]; // holder outer dims
+base_enlarge = 5;
+major_base = [40+base_enlarge, 40+base_enlarge, 3]; // holder outer dims
 substrate = [15, 15, 1]; // substrate dimensions
-substrate_fudge = 0.2; // manufacturing fudge factor
+substrate_fudge = 0.4; // manufacturing fudge factor
 shelf_thickness = 0.5;
 shelf_width = 2;
 window = [substrate[0]-shelf_width, substrate[1]-shelf_width];
 substrate_fudged = [substrate[0]+substrate_fudge, substrate[1]+substrate_fudge];
 
-module base() {
+module base(outer) {
     difference() {
-        translate([-major[0]/2, -major[1]/2, 0]) cube(major);
-        translate([-window[0]/2, -window[1]/2, -1]) cube([window[0], window[0],major[2]*2]);
-        translate([-substrate_fudged[0]/2, -substrate_fudged[1]/2, shelf_thickness]) cube([substrate_fudged[0], substrate_fudged[1], major[2]*2]);
+        translate([-outer[0]/2, -outer[1]/2, 0]) cube(outer);
+        translate([-window[0]/2, -window[1]/2, -1]) cube([window[0], window[0],outer[2]*2]);
+        translate([-substrate_fudged[0]/2, -substrate_fudged[1]/2, shelf_thickness]) cube([substrate_fudged[0], substrate_fudged[1], outer[2]*2]);
         }
 }
 
-module cap() {
+module cap(outer) {
     difference() {
         union(){
-            translate([-major[0]/2, -major[1]/2, 0]) cube(major);
-            translate([-substrate[0]/2, -substrate[1]/2, 0]) cube([substrate[0], substrate[1], 2*major[2]-shelf_thickness-substrate[2]]);
+            translate([-outer[0]/2, -outer[1]/2, 0]) cube(outer);
+            translate([-substrate[0]/2, -substrate[1]/2, 0]) cube([substrate[0], substrate[1], 2*outer[2]-shelf_thickness-substrate[2]]);
         }
-        translate([-window[0]/2, -window[1]/2, -1]) cube([window[0], window[0],major[2]*2]);
+        translate([-window[0]/2, -window[1]/2, -1]) cube([window[0], window[0],outer[2]*2]);
         
     }
 }
 
-base();
-//cap();
+base(major_base);
+//cap(major_cap);
