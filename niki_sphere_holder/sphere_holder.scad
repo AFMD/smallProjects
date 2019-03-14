@@ -2,11 +2,15 @@
 // grey@mutovis.com
 // 12 March 2019
 
+include <../../mutovis/logo/logo_modules.scad>
+$fn=100;
+
+
 // all dims in mm
 major_cap = [40, 50, 3]; // holder outer dims
 major_base = [50, 40, 3]; // holder outer dims
 substrate = [15, 15, 1]; // substrate dimensions
-substrate_fudge = 0.4; // manufacturing fudge factor
+substrate_fudge = 0.6; // manufacturing fudge factor
 shelf_thickness = 0.5;
 shelf_width = 2;
 window = [substrate[0]-shelf_width, substrate[1]-shelf_width];
@@ -27,9 +31,27 @@ module cap(outer) {
             translate([-substrate[0]/2, -substrate[1]/2, 0]) cube([substrate[0], substrate[1], 2*outer[2]-shelf_thickness-substrate[2]]);
         }
         translate([-window[0]/2, -window[1]/2, -1]) cube([window[0], window[0],outer[2]*2]);
-        
     }
 }
 
-base(major_base);
-//cap(major_cap);
+module fancy(){
+    logo_scale = 0.7;
+    text_scale = 0.456;
+    mid_offset = (major_cap[1]/2 - substrate[1]/2)/2+substrate[1]/2;
+    linear_extrude(height = major_cap[2]){
+        translate([0,mid_offset,0]) scale([-logo_scale, logo_scale, 1]) logo();
+        translate([0,-mid_offset,0]) scale([-text_scale, text_scale, 1]) logo_text();
+    }
+}
+
+// STL1:
+//base(major_base);
+
+// STL2:
+difference(){
+    cap(major_cap);
+    fancy();
+}
+
+// STL3:
+//fancy();
