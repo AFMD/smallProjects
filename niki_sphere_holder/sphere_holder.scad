@@ -35,13 +35,10 @@ module cap(outer) {
 }
 
 module fancy(){
-    logo_scale = 0.7;
-    text_scale = 0.456;
-    mid_offset = (major_cap[1]/2 - substrate[1]/2)/2+substrate[1]/2;
-    linear_extrude(height = major_cap[2]){
-        translate([0,mid_offset,0]) scale([-logo_scale, logo_scale, 1]) logo();
-        translate([0,-mid_offset,0]) scale([-text_scale, text_scale, 1]) logo_text();
-    }
+    text_scale = 0.6;
+    mid_offset = (major_cap[0]/2 - substrate[1]/2)/2+substrate[1]/2;
+    rotate([0,0,90]) translate([0,mid_offset,major_cap[2]/2]) linear_extrude(height = major_cap[2]/2)  scale([text_scale, text_scale, 1]) logo_text();
+    rotate([0,0,90]) translate([0,mid_offset,0]) linear_extrude(height = major_cap[2]/2)  scale([-text_scale, text_scale, 1]) logo_text();
 }
 
 // STL1:
