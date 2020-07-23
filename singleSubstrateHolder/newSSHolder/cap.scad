@@ -23,7 +23,7 @@ difference(){
             square([capX,capY], center=true);
             minkowski(){
               projection(cut = true) translate([0,0,-totalHeight/2+1]) base(deviceDim);
-              circle(capFit,center=true);
+              circle(capFit);
             }
             square([windowDim,windowDim], center=true);
         }
