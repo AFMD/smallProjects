@@ -7,17 +7,17 @@ glass_xy_fudge = 0.5;
 pocket_xy = glass_dim + glass_xy_fudge;
 
 // for mechanical robustness
-outer_rim_width = 15;
+outer_rim_width = 10;
 
-extraXY = 50;
+extraXY = 30;
 
 // main cube outer dims
 x = pocket_xy + extraXY;
 y = pocket_xy + extraXY;
-z = 4; // for mechanical robustness
+z = 5; // for mechanical robustness
 
 slot_width = 1.5;
-side_opening_width = 5.75;
+side_opening_width = 4.5;
 
 side_pocket_x = y/2-outer_rim_width-glass_dim/2+side_opening_width;
 
