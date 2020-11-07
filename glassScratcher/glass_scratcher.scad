@@ -3,7 +3,7 @@ glass_z_fudge = 0.1;
 pocket_thickness = glass_thickness + glass_z_fudge;
 active_area_buffer_thickness = 0.25;
 
-glass_dim = 28;
+glass_dim = 30;
 glass_fudge = 0.5;
 pocket_dim = glass_dim + glass_fudge;
 ridge_dim = 10;
@@ -15,7 +15,7 @@ y = pocket_dim + extraXY;
 z = 3;
 
 slot_depth = z - glass_thickness;
-slot_width = 4;
+slot_width = 2;
 wide_slot_width = 25;
 blocker_width = (pocket_dim - (3*slot_width))/4;
 slot_x_position = extraXY/2;
