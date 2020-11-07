@@ -1,52 +1,38 @@
 glass_thickness = 1.1;
-glass_z_fudge = 0.1;
-pocket_thickness = glass_thickness + glass_z_fudge;
-active_area_buffer_thickness = 0.25;
+no_scratch_z = 0.25;
+pocket_thickness = glass_thickness + no_scratch_z;
 
 glass_dim = 30;
-glass_fudge = 0.5;
-pocket_dim = glass_dim + glass_fudge;
-ridge_dim = 10;
+glass_xy_fudge = 0.5;
+pocket_xy = glass_dim + glass_xy_fudge;
+
+// for mechanical robustness
+outer_rim_width = 15;
 
 extraXY = 50;
 
-x = pocket_dim + extraXY;
-y = pocket_dim + extraXY;
-z = 3;
+// main cube outer dims
+x = pocket_xy + extraXY;
+y = pocket_xy + extraXY;
+z = 4; // for mechanical robustness
 
-slot_depth = z - glass_thickness;
-slot_width = 2;
-wide_slot_width = 25;
-blocker_width = (pocket_dim - (3*slot_width))/4;
-slot_x_position = extraXY/2;
-removal_notch = blocker_width;
-// Ridge for structural stability
-difference(){
-    cube([x,y,z]);
-    
-    translate([ridge_dim,ridge_dim,0])
-    cube([x-2*ridge_dim,y-2*ridge_dim,z]);
-}
+slot_width = 1.5;
+side_opening_width = 5.75;
+
+side_pocket_x = y/2-outer_rim_width-glass_dim/2+side_opening_width;
+
 difference(){
     cube([x,y,z]);
     
     // first slot
-    translate([extraXY/2 - wide_slot_width+slot_width,0,glass_thickness]) cube([wide_slot_width,y,slot_depth]);
+    translate([outer_rim_width, outer_rim_width, glass_thickness]) cube([side_pocket_x, y-2*outer_rim_width, z-glass_thickness]);
     
     // middle slot
-    translate([x/2-slot_width/2,0,glass_thickness]) cube([slot_width,y,slot_depth]);
+    translate([x/2-slot_width/2,outer_rim_width, glass_thickness]) cube([slot_width,y-2*outer_rim_width, z-glass_thickness]);
     
     // third slot
-    translate([x-slot_x_position-slot_width,0,glass_thickness]) cube([wide_slot_width,y,slot_depth]);
+    translate([x-outer_rim_width-side_pocket_x, outer_rim_width, glass_thickness]) cube([side_pocket_x, y-2*outer_rim_width, z-glass_thickness]);
     
     // glass pocket
-    translate([(x-pocket_dim)/2,(y-pocket_dim)/2,0]) cube([pocket_dim,pocket_dim,pocket_thickness]);
-    
-    // active area buffer
-    translate([(x-pocket_dim)/2+slot_width/2,(y-pocket_dim)/2+slot_width/2,0]) cube([pocket_dim-slot_width,pocket_dim-slot_width,glass_thickness+active_area_buffer_thickness]);
-    
-    // glass removal notch
-    
-    translate([x/2+(slot_width/2)+blocker_width,extraXY/2+pocket_dim,0]) cylinder(glass_thickness,removal_notch,removal_notch);
-    
+    translate([(x-pocket_xy)/2,(y-pocket_xy)/2,0]) cube([pocket_xy, pocket_xy, pocket_thickness]);
 }
