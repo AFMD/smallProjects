@@ -1,5 +1,6 @@
 // units in mm
 // optics light tube for Akash
+$fn = 30;
 
 // editable
 post_diameter_nominal = 25;
@@ -40,4 +41,4 @@ module body(){
     }
 }
 
-body();
+// body();
