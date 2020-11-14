@@ -18,7 +18,7 @@ colm_d_fudge = 0.3;
 colm_h = 15;
 
 // collimator support cylinder
-support_cyl_d_offset = 5;
+support_cyl_d_offset = 6;
 support_cyl_h_offset = 3;
 
 mount_hole_d = 6.5;
