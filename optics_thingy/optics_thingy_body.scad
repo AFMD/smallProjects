@@ -1,10 +1,10 @@
 // units in mm
 // optics light tube for Akash
-$fn = 30;
+$fn = 40;
 
 // editable
-post_diameter_nominal = 25;
-post_d_fudge = -0.1;
+post_diameter_nominal = 12.7;
+post_d_fudge = -0.4;
 
 post_height = 60;
 
@@ -12,11 +12,11 @@ platexy = 50;
 plate_t = 10;
 inner_d = 10;
 
-colm_diameter_nominal = 12;
+colm_diameter_nominal = 1;
 colm_d_fudge = 0.1;
 colm_h = 12.7;
 
-mount_hole_d = 5;
+mount_hole_d = 6.2;
 hole_offset = 15;
 
 // calculated

@@ -1,6 +1,6 @@
 include <optics_thingy_body.scad>
 
-fiber_clearance_d = 11;
+fiber_clearance_d = 10;
 
 // geometry
 
